@@ -4,17 +4,17 @@ on:
   pull_request:
     branches:
       - master
-      - development
 
 jobs:
   tests:
     name: 🧪 Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
 
-      - name: 🔧 Setup Dart SDK
-        uses: dart-lang/setup-dart@v1.0
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@v1.6.0
 
       - name: ⏬ Install dependencies
         run: dart pub get

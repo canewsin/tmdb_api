@@ -1,5 +1,5 @@
 //tv shows
-part of tmdb_api;
+part of '../../../tmdb_api.dart';
 
 class Tv extends Category<V3> {
   Tv(V3 v) : super(v, 'tv');
@@ -22,6 +22,7 @@ class Tv extends Category<V3> {
     int tvId, {
     String? appendToResponse,
     String? language,
+    String? includeImageLanguage,
   }) {
     if (tvId < 1) {
       throw ArgumentError('tvId<1 is true');
@@ -30,6 +31,10 @@ class Tv extends Category<V3> {
     final para = <String>['language=${language ?? _v._tmdb.defaultLanguage}'];
     if (appendToResponse != null) {
       para.add('append_to_response=$appendToResponse');
+    }
+
+    if (includeImageLanguage != null) {
+      para.add('include_image_language=$includeImageLanguage');
     }
 
     return _v._query(
@@ -206,10 +211,7 @@ class Tv extends Category<V3> {
 
     return _v._query(
       '$_endPoint/$tvId/recommendations',
-      optionalQueries: [
-        'language=${language ?? _v._tmdb.defaultLanguage}',
-        'page=$page'
-      ],
+      optionalQueries: ['language=${language ?? _v._tmdb.defaultLanguage}', 'page=$page'],
     );
   }
 
@@ -234,10 +236,7 @@ class Tv extends Category<V3> {
 
     return _v._query(
       '$_endPoint/$tvId/reviews',
-      optionalQueries: [
-        'language=${language ?? _v._tmdb.defaultLanguage}',
-        'page=$page'
-      ],
+      optionalQueries: ['language=${language ?? _v._tmdb.defaultLanguage}', 'page=$page'],
     );
   }
 
@@ -282,10 +281,7 @@ class Tv extends Category<V3> {
 
     return _v._query(
       '$_endPoint/$tvId/similar',
-      optionalQueries: [
-        'language=${language ?? _v._tmdb.defaultLanguage}',
-        'page=$page'
-      ],
+      optionalQueries: ['language=${language ?? _v._tmdb.defaultLanguage}', 'page=$page'],
     );
   }
 
@@ -319,7 +315,7 @@ class Tv extends Category<V3> {
   /// ```
   ///
   Future<Map> getVideos(String tvId) {
-    return _v._query('$_endPoint/$tvId');
+    return _v._query('$_endPoint/$tvId/videos');
   }
 
   /// Powered by our partnership with JustWatch, you can query
@@ -360,8 +356,10 @@ class Tv extends Category<V3> {
   ///Map result = await tmdb.v3.tv.getLatest(language: 'en-US');
   ///```
   Future<Map> getLatest({String? language}) {
-    return _v._query('$_endPoint/latest',
-        optionalQueries: ['language=${language ?? _v._tmdb.defaultLanguage}']);
+    return _v._query(
+      '$_endPoint/latest',
+      optionalQueries: ['language=${language ?? _v._tmdb.defaultLanguage}'],
+    );
   }
 
   /// Get a list of the current popular movies on TMDb.
@@ -404,10 +402,7 @@ class Tv extends Category<V3> {
 
     return _v._query(
       '$_endPoint/popular',
-      optionalQueries: [
-        'language=${language ?? _v._tmdb.defaultLanguage}',
-        'page=$page'
-      ],
+      optionalQueries: ['language=${language ?? _v._tmdb.defaultLanguage}', 'page=$page'],
     );
   }
 
@@ -431,10 +426,7 @@ class Tv extends Category<V3> {
 
     return _v._query(
       '$_endPoint/top_rated',
-      optionalQueries: [
-        'language=${language ?? _v._tmdb.defaultLanguage}',
-        'page=$page'
-      ],
+      optionalQueries: ['language=${language ?? _v._tmdb.defaultLanguage}', 'page=$page'],
     );
   }
 
@@ -459,10 +451,7 @@ class Tv extends Category<V3> {
     }
     return _v._query(
       '$_endPoint/airing_today',
-      optionalQueries: [
-        'language=${language ?? _v._tmdb.defaultLanguage}',
-        'page=$page'
-      ],
+      optionalQueries: ['language=${language ?? _v._tmdb.defaultLanguage}', 'page=$page'],
     );
   }
 
@@ -487,10 +476,7 @@ class Tv extends Category<V3> {
     }
     return _v._query(
       '$_endPoint/on_the_air',
-      optionalQueries: [
-        'language=${language ?? _v._tmdb.defaultLanguage}',
-        'page=$page'
-      ],
+      optionalQueries: ['language=${language ?? _v._tmdb.defaultLanguage}', 'page=$page'],
     );
   }
 

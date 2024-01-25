@@ -1,4 +1,6 @@
 @Skip('Only manual tests are possible Because of auth tokens')
+library;
+
 import 'package:test/test.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
@@ -8,10 +10,8 @@ void main() {
   final tmdb = TMDB(ApiKeys(Keys.apiV3!, Keys.apiV4!));
   group('Account', () {
     test('without prameters', () async {
-      final result = await tmdb.v3.account
-          .getDetails('5129b38561c99f577bd85cc7f2ff47bb79735902');
+      final result = await tmdb.v3.account.getDetails('5129b38561c99f577bd85cc7f2ff47bb79735902');
       print(result);
-      expect(result is Map, true);
       expect(result.containsKey('status_code'), false);
     });
 
@@ -22,7 +22,6 @@ void main() {
           8890102,
         );
         print(result);
-        expect(result is Map, true);
         expect(result.containsKey('status_code'), false);
       });
     });
@@ -34,7 +33,6 @@ void main() {
           8890102,
         );
         print(result);
-        expect(result is Map, true);
         expect(result.containsKey('status_code'), false);
       });
     });
@@ -46,7 +44,6 @@ void main() {
           8890102,
         );
         print(result);
-        expect(result is Map, true);
         expect(result.containsKey('status_code'), false);
       });
     });
@@ -60,7 +57,6 @@ void main() {
           MediaType.movie,
         );
         print(result);
-        expect(result is Map, true);
         expect(result.containsKey('status_message'), true);
       });
     });
@@ -72,7 +68,6 @@ void main() {
           8890102,
         );
         print(result);
-        expect(result is Map, true);
         expect(result.containsKey('results'), true);
       });
     });
@@ -84,7 +79,6 @@ void main() {
           8890102,
         );
         print(result);
-        expect(result is Map, true);
         expect(result.containsKey('results'), true);
       });
     });
@@ -96,7 +90,6 @@ void main() {
           8890102,
         );
         print(result);
-        expect(result is Map, true);
         expect(result.containsKey('results'), true);
       });
     });
@@ -108,7 +101,6 @@ void main() {
           8890102,
         );
         print(result);
-        expect(result is Map, true);
         expect(result.containsKey('results'), true);
       });
     });
@@ -120,7 +112,6 @@ void main() {
           8890102,
         );
         print(result);
-        expect(result is Map, true);
         expect(result.containsKey('results'), true);
       });
     });
@@ -134,7 +125,6 @@ void main() {
           MediaType.tv,
         );
         print(result);
-        expect(result is Map, true);
         expect(result.containsKey('status_message'), true);
       });
     });
