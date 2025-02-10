@@ -1,4 +1,4 @@
-part of tmdb_api;
+part of '../../../tmdb_api.dart';
 
 class Trending extends Category<V3> {
   Trending(V3 v) : super(v, 'trending');
@@ -27,17 +27,15 @@ class Trending extends Category<V3> {
   ///Map result = await tmdb.v3.trending.getTrending(mediaType = MediaType.all,timeWindow = TimeWindow.day);
   /// ```
   ///
-  Future<Map> getTrending(
-      {MediaType mediaType = MediaType.all,
-      TimeWindow timeWindow = TimeWindow.day,
-      int page = 1,
-      String? language}) {
+  Future<Map> getTrending({
+    MediaType mediaType = MediaType.all,
+    TimeWindow timeWindow = TimeWindow.day,
+    int page = 1,
+    String? language,
+  }) {
     return _v._query(
       '$_endPoint/${_getMediaType(mediaType)}/${_getTimeWindow(timeWindow)}',
-      optionalQueries: [
-        'page=$page',
-        'language=${language ?? _v._tmdb.defaultLanguage}'
-      ],
+      optionalQueries: ['page=$page', 'language=${language ?? _v._tmdb.defaultLanguage}'],
     );
   }
 
@@ -52,8 +50,6 @@ class Trending extends Category<V3> {
         return 'tv';
       case MediaType.person:
         return 'person';
-      default:
-        return 'all';
     }
   }
 
@@ -63,8 +59,6 @@ class Trending extends Category<V3> {
       case TimeWindow.day:
         return 'day';
       case TimeWindow.week:
-        return 'week';
-      default:
         return 'week';
     }
   }

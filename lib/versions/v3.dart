@@ -1,4 +1,4 @@
-part of tmdb_api;
+part of '../tmdb_api.dart';
 
 class V3 extends Version {
   late Movies _movies;
@@ -24,6 +24,7 @@ class V3 extends Version {
   late Lists _lists;
   late Account _account;
   late GuestSession _guestSession;
+  late WatchProviders _watchProviders;
 
   Movies get movies => _movies;
   Tv get tv => _tv;
@@ -50,6 +51,7 @@ class V3 extends Version {
   Lists get lists => _lists;
   Account get account => _account;
   GuestSession get guestSession => _guestSession;
+  WatchProviders get watchProviders => _watchProviders;
 
   V3(TMDB tmdb) : super(tmdb, 3) {
     _reviews = Reviews(this);
@@ -76,6 +78,7 @@ class V3 extends Version {
     _lists = Lists(this);
     _account = Account(this);
     _guestSession = GuestSession(this);
+    _watchProviders = WatchProviders(this);
   }
 
   ///Queries with the given parameters
@@ -88,7 +91,7 @@ class V3 extends Version {
     String endPoint, {
     HttpMethod method = HttpMethod.get,
     List<String>? optionalQueries,
-    Map<String, String>? postBody,
+    Map<String, dynamic>? postBody,
     Map<String, String>? deleteBody,
     Map<String, String>? postHeaders,
   }) async {
@@ -121,7 +124,7 @@ class V3 extends Version {
       // return jsonDecode(response.body)! as Map;
     } catch (e) {
       _tmdb._logger.errorLog(
-        'Exception while making a request. Exception = {${e.toString()}',
+        'Exception while making a request. Exception = {$e',
       );
       _tmdb._logger.infoLog(
         'You can create a issue at https://github.com/RatakondalaArun/tmdb_api/issues',

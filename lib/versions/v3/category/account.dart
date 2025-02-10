@@ -1,4 +1,4 @@
-part of tmdb_api;
+part of '../../../tmdb_api.dart';
 
 class Account extends Category<V3> {
   Account(V3 v) : super(v, 'account');
@@ -153,7 +153,7 @@ class Account extends Category<V3> {
         'session_id=$sessionId',
         'language=${language ?? _v._tmdb.defaultLanguage}',
         'page=$page',
-        'sort_by=$sort'
+        'sort_by=$sort',
       ],
     );
   }
@@ -210,7 +210,7 @@ class Account extends Category<V3> {
         'session_id=$sessionId',
         'language=${language ?? _v._tmdb.defaultLanguage}',
         'page=$page',
-        'sort_by=$sort'
+        'sort_by=$sort',
       ],
     );
   }
@@ -269,8 +269,8 @@ class Account extends Category<V3> {
       optionalQueries: ['session_id=$sessionId'],
       postBody: {
         'media_type': type,
-        'media_id': '$mediaId',
-        'favorite': '$isFavorite'
+        'media_id': mediaId,
+        'favorite': isFavorite,
       },
     );
   }
@@ -395,7 +395,7 @@ class Account extends Category<V3> {
         'session_id=$sessionId',
         'language=${language ?? _v._tmdb.defaultLanguage}',
         'page=$page',
-        'sort_by=$sort'
+        'sort_by=$sort',
       ],
     );
   }
@@ -452,7 +452,7 @@ class Account extends Category<V3> {
         'session_id=$sessionId',
         'language=${language ?? _v._tmdb.defaultLanguage}',
         'page=$page',
-        'sort_by=$sort'
+        'sort_by=$sort',
       ],
     );
   }
@@ -528,7 +528,7 @@ class Account extends Category<V3> {
         'session_id=$sessionId',
         'language=${language ?? _v._tmdb.defaultLanguage}',
         'page=$page',
-        'sort_by=$sort'
+        'sort_by=$sort',
       ],
     );
   }
@@ -605,7 +605,7 @@ class Account extends Category<V3> {
         'session_id=$sessionId',
         'language=${language ?? _v._tmdb.defaultLanguage}',
         'page=$page',
-        'sort_by=$sort'
+        'sort_by=$sort',
       ],
     );
   }
@@ -664,8 +664,8 @@ class Account extends Category<V3> {
       optionalQueries: ['session_id=$sessionId'],
       postBody: {
         'media_type': type,
-        'media_id': '$mediaId',
-        'watchlist': '$shouldAdd',
+        'media_id': mediaId,
+        'watchlist': shouldAdd,
       },
     );
   }
